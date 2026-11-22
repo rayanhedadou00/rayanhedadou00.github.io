@@ -1,0 +1,2115 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rayane Haddadou — Full-Stack AI App Rescue &amp; SaaS UI/UX Architect</title>
+  <meta name="description" content="Independent Full-Stack Engineer & UI/UX Architect specializing in fixing, securing, and deploying Lovable, Bolt.new, Cursor, Next.js, Supabase, and Stripe web apps to production." />
+  <meta property="og:title" content="Rayane Haddadou — Full-Stack AI App Rescue & SaaS UI/UX Architect" />
+  <meta property="og:description" content="Fixed-price production rescue for Lovable, Bolt.new, and Cursor AI web apps. Supabase RLS security, Stripe webhooks, clean UI/UX polish, and Vercel launch in 24–48h." />
+  <meta property="og:image" content="./s1_4x3_hero.png" />
+  <meta name="theme-color" content="#FFFFFF" />
+  <!-- Feature 15: Clean SVG Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111827'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23FFFFFF' font-family='Inter,sans-serif' font-weight='800' font-size='26'%3ERH%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-page: #F9FAFB;
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F3F4F6;
+      --text-primary: #111827;
+      --text-secondary: #4B5563;
+      --text-muted: #6B7280;
+      --border: #E5E7EB;
+      --border-hover: #D1D5DB;
+      --accent: #111827;
+      --accent-hover: #1F2937;
+      --indigo-soft: #EEF2FF;
+      --indigo-text: #3730A3;
+      --indigo-border: #C7D2FE;
+      --green-bg: #ECFDF5;
+      --green-text: #065F46;
+      --green-border: #A7F3D0;
+      --green-dot: #10B981;
+      --red-bg: #FEF2F2;
+      --red-text: #991B1B;
+      --red-border: #FECACA;
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 6px 16px -3px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 20px 35px -10px rgba(0, 0, 0, 0.12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; background: var(--bg-page); color: var(--text-primary); }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+    /* =================================================================
+       TOP NAVBAR + MOBILE HAMBURGER MENU (Feature 11 & 14)
+       ================================================================= */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+      color: var(--text-primary);
+      min-width: 0;
+    }
+    .brand-avatar {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+      border-radius: 9px;
+      background: var(--text-primary);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 0.03em;
+    }
+    .brand-info {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+    .brand-name {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--text-primary);
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+    .brand-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .nav-menu a {
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 13.5px;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    .nav-menu a:hover { color: var(--text-primary); }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .time-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      padding: 5px 10px;
+      border-radius: 8px;
+    }
+    .lang-toggle {
+      display: inline-flex;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2px;
+    }
+    .lang-btn {
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .lang-btn.active {
+      background: #FFFFFF;
+      color: var(--text-primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-dark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      background: var(--accent);
+      color: #FFFFFF;
+      font-size: 13.5px;
+      font-weight: 600;
+      padding: 9px 16px;
+      border-radius: 9px;
+      text-decoration: none;
+      border: 1px solid var(--accent);
+      cursor: pointer;
+      transition: background 0.15s, transform 0.15s;
+      white-space: nowrap;
+    }
+    .btn-dark:hover { background: var(--accent-hover); transform: translateY(-1px); }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      background: #FFFFFF;
+      color: var(--text-primary);
+      font-size: 13.5px;
+      font-weight: 600;
+      padding: 9px 16px;
+      border-radius: 9px;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+      white-space: nowrap;
+    }
+    .btn-outline:hover { background: var(--bg-subtle); border-color: var(--border-hover); }
+
+    .mobile-menu-btn {
+      display: none;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      width: 36px;
+      height: 36px;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: var(--text-primary);
+      cursor: pointer;
+    }
+    .mobile-drawer {
+      display: none;
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .mobile-drawer.open { display: flex; }
+    .mobile-drawer a {
+      text-decoration: none;
+      color: var(--text-primary);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--bg-subtle);
+    }
+
+    /* =================================================================
+       HERO SECTION + FEATURE 3 (SYMPTOMS BAR) + FEATURE 6 (SAMPLE REPORT)
+       ================================================================= */
+    .hero {
+      padding: 56px 0 44px;
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-top-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .availability-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green-bg);
+      color: var(--green-text);
+      padding: 5px 13px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      font-weight: 600;
+      border: 1px solid var(--green-border);
+    }
+    .avail-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green-dot);
+      flex-shrink: 0;
+    }
+    .sla-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg-subtle);
+      color: var(--text-secondary);
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      border: 1px solid var(--border);
+    }
+
+    .hero-title {
+      font-size: clamp(30px, 4vw, 46px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      color: var(--text-primary);
+      max-width: 820px;
+      margin-bottom: 16px;
+    }
+    .hero-desc {
+      font-size: 17px;
+      color: var(--text-secondary);
+      max-width: 740px;
+      margin-bottom: 28px;
+      line-height: 1.65;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    .hero-actions .btn-dark,
+    .hero-actions .btn-outline {
+      padding: 12px 20px;
+      font-size: 14.5px;
+    }
+
+    /* Feature 3: Common Symptoms We Fix Bar */
+    .symptoms-box {
+      background: var(--bg-page);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .symp-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-right: 6px;
+    }
+    .symp-chip {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    /* =================================================================
+       SECTION GENERIC
+       ================================================================= */
+    .section {
+      padding: 56px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .section-eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .section-title {
+      font-size: clamp(22px, 2.8vw, 30px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+    .section-subtitle {
+      font-size: 15px;
+      color: var(--text-secondary);
+      max-width: 640px;
+    }
+
+    /* =================================================================
+       COMPACT 3-COLUMN SERVICES GRID ON DESKTOP + GUARANTEES + GATE
+       ================================================================= */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      align-items: stretch;
+    }
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--shadow-sm);
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .service-card:hover {
+      border-color: var(--border-hover);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+    .service-card.popular {
+      border: 2px solid var(--text-primary);
+    }
+    .srv-thumb {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #0B101E;
+      margin-bottom: 14px;
+      cursor: zoom-in;
+    }
+    .srv-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.25s;
+    }
+    .srv-thumb:hover img { transform: scale(1.02); }
+    .zoom-hint {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(17, 24, 39, 0.82);
+      color: #FFFFFF;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 6px;
+      pointer-events: none;
+    }
+
+    .srv-top-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .srv-badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 6px;
+      background: var(--bg-subtle);
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+    }
+    .srv-badge.highlight {
+      background: var(--indigo-soft);
+      color: var(--indigo-text);
+      border-color: var(--indigo-border);
+    }
+    .srv-turnaround {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .srv-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.32;
+      margin-bottom: 8px;
+    }
+    .srv-desc {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+    .srv-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+      padding-top: 12px;
+      border-top: 1px solid var(--bg-subtle);
+    }
+    .srv-bullets li {
+      font-size: 13px;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+      line-height: 1.4;
+    }
+    .srv-bullets li::before {
+      content: "✓";
+      color: var(--green-dot);
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .srv-footer {
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .srv-price-wrap {
+      display: flex;
+      flex-direction: column;
+    }
+    .srv-price-lbl {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .srv-price-val {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    /* Feature 9: 3 Ironclad Client Guarantees Bar */
+    .guarantees-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .guarantee-item {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .g-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: var(--bg-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .g-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+    }
+    .g-desc {
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    /* Feature 13: Standard Delivery Quality Gate Strip */
+    .quality-strip {
+      margin-top: 16px;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .q-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .q-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .q-item {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--green-text);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* =================================================================
+       PORTFOLIO CASE STUDIES + FEATURE 10 (1-CLICK FILTER)
+       ================================================================= */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .filter-btn {
+      border: 1px solid var(--border);
+      background: var(--bg-page);
+      color: var(--text-secondary);
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 7px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .filter-btn.active {
+      background: var(--text-primary);
+      color: #FFFFFF;
+      border-color: var(--text-primary);
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+    .work-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-sm);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .work-card.hidden { display: none; }
+    .work-card:hover {
+      border-color: var(--border-hover);
+      box-shadow: var(--shadow-md);
+    }
+    .work-media {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      background: #0B101E;
+      border-bottom: 1px solid var(--border);
+    }
+    .work-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      cursor: zoom-in;
+    }
+    .work-slide-tabs {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      display: inline-flex;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2px;
+      box-shadow: var(--shadow-md);
+    }
+    .work-tab-btn {
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .work-tab-btn.active {
+      background: var(--text-primary);
+      color: #FFFFFF;
+    }
+    .work-content {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 1;
+      gap: 14px;
+    }
+    .work-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+    .work-tag {
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: var(--bg-subtle);
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+    .work-title {
+      font-size: 17.5px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+      line-height: 1.35;
+    }
+    .work-summary {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+    .work-footer {
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .work-metric {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--green-text);
+      background: var(--green-bg);
+      padding: 3px 9px;
+      border-radius: 6px;
+    }
+    .work-link {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+    .work-link:hover { text-decoration: underline; }
+
+    /* =================================================================
+       FEATURE 7 (CODE DIFF) & FEATURE 8 (ROI / COST COMPARISON)
+       ================================================================= */
+    .split-proof-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+    .proof-box {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .diff-tabs {
+      display: inline-flex;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 3px;
+      margin-bottom: 14px;
+      align-self: flex-start;
+    }
+    .diff-tab {
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .diff-tab.active {
+      background: #FFFFFF;
+      color: var(--text-primary);
+      box-shadow: var(--shadow-sm);
+    }
+    .code-compare {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .code-snippet {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      line-height: 1.5;
+      padding: 12px 14px;
+      border-radius: 10px;
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
+    .code-snippet.bad {
+      background: var(--red-bg);
+      border: 1px solid var(--red-border);
+      color: var(--red-text);
+    }
+    .code-snippet.good {
+      background: var(--green-bg);
+      border: 1px solid var(--green-border);
+      color: var(--green-text);
+    }
+
+    .roi-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .roi-row {
+      padding: 14px 16px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .roi-row.bad { background: var(--bg-page); }
+    .roi-row.good { background: var(--green-bg); border-color: var(--green-border); }
+    .roi-title { font-size: 13.5px; font-weight: 700; color: var(--text-primary); }
+    .roi-sub { font-size: 12px; color: var(--text-secondary); }
+    .roi-val { font-family: 'JetBrains Mono', monospace; font-size: 15px; font-weight: 800; white-space: nowrap; }
+
+    /* =================================================================
+       HOW IT WORKS (3 STEPS) + FEATURE 2 (ACCORDION FAQ)
+       ================================================================= */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-bottom: 40px;
+    }
+    .process-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+    }
+    .process-step {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 6px;
+    }
+    .process-title {
+      font-size: 16.5px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+    .process-desc {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .faq-item {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .faq-q {
+      width: 100%;
+      background: transparent;
+      border: none;
+      padding: 16px 20px;
+      text-align: left;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      cursor: pointer;
+    }
+    .faq-icon {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 16px;
+      color: var(--text-muted);
+      transition: transform 0.2s;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-a {
+      display: none;
+      padding: 0 20px 16px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .faq-item.open .faq-a { display: block; }
+
+    /* =================================================================
+       FEATURE 5 & 12: FREE 15-MIN TRIAGE CARD + 1-CLICK COPY BRIEF
+       ================================================================= */
+    .triage-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: center;
+      box-shadow: var(--shadow-sm);
+    }
+    .brief-box {
+      background: var(--bg-page);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+    }
+    .brief-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-secondary);
+    }
+    .brief-pre {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      color: var(--text-primary);
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 12px;
+      line-height: 1.55;
+      margin-bottom: 12px;
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
+
+    /* Footer */
+    .footer {
+      background: #FFFFFF;
+      padding: 40px 0 80px;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-copy { font-size: 13px; color: var(--text-muted); }
+
+    /* =================================================================
+       FEATURE 1 & 6: MODALS (IMAGE LIGHTBOX + SAMPLE AUDIT REPORT)
+       ================================================================= */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(17, 24, 39, 0.78);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-backdrop.open { display: flex; }
+    .lightbox-box {
+      max-width: 1000px;
+      width: 100%;
+      background: #FFFFFF;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    .modal-top {
+      padding: 12px 18px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .modal-title { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+    .modal-close {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 10px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .lightbox-img-wrap {
+      background: #0B101E;
+      max-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox-img-wrap img {
+      max-width: 100%;
+      max-height: 78vh;
+      object-fit: contain;
+      display: block;
+    }
+    .audit-modal-body {
+      padding: 22px;
+      max-height: 75vh;
+      overflow-y: auto;
+      font-size: 13.5px;
+      color: var(--text-secondary);
+    }
+    .audit-log-block {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12.5px;
+      background: var(--bg-page);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      line-height: 1.65;
+      color: var(--text-primary);
+      margin-top: 12px;
+    }
+
+    /* =================================================================
+       FEATURE 4: STICKY MOBILE BOTTOM CTA BAR & 100% MOBILE FIXES
+       ================================================================= */
+    .mobile-sticky-cta {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 45;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid var(--border);
+      padding: 10px 16px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    @media (max-width: 980px) {
+      .services-grid,
+      .guarantees-grid,
+      .work-grid,
+      .split-proof-grid,
+      .process-grid,
+      .triage-card {
+        grid-template-columns: 1fr;
+      }
+      .nav-menu,
+      .time-chip {
+        display: none;
+      }
+      .mobile-menu-btn {
+        display: inline-flex;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 0 14px; }
+      .nav-inner { padding: 10px 14px; gap: 6px; }
+      .brand { gap: 8px; }
+      .brand-avatar { width: 32px; height: 32px; font-size: 12px; }
+      .brand-sub { display: none; }
+      .brand-name { font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 130px; }
+      .nav-right { gap: 6px; }
+      .nav-right .btn-dark { display: none; }
+      .hero { padding: 32px 0 28px; }
+      .hero-title { font-size: 26px; }
+      .hero-desc { font-size: 15px; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn-dark,
+      .hero-actions .btn-outline { width: 100%; }
+      .roi-row { flex-direction: column; align-items: flex-start; gap: 6px; }
+      .mobile-sticky-cta { display: flex; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAVBAR -->
+  <header class="navbar">
+    <div class="nav-inner">
+      <a href="#" class="brand">
+        <div class="brand-avatar">RH</div>
+        <div class="brand-info">
+          <span class="brand-name">Rayane Haddadou</span>
+          <span class="brand-sub" data-i18n="brand_sub">AI App Rescue &amp; Full-Stack Architect</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="#services" data-i18n="nav_services">Services</a>
+        <a href="#work" data-i18n="nav_work">Selected Work</a>
+        <a href="#proof" data-i18n="nav_proof">Code &amp; ROI</a>
+        <a href="#faq" data-i18n="nav_faq">FAQ</a>
+        <a href="https://www.linkedin.com/in/rayane-haddadou/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </nav>
+
+      <div class="nav-right">
+        <!-- Feature 11: Live Timezone Indicator -->
+        <div class="time-chip">
+          <span class="avail-dot"></span>
+          <span class="mono" id="live-cet-time">CET (GMT+1)</span>
+        </div>
+
+        <div class="lang-toggle" aria-label="Language Switcher">
+          <button type="button" class="lang-btn active" id="btn-en" onclick="setLanguage('en')">EN</button>
+          <button type="button" class="lang-btn" id="btn-fr" onclick="setLanguage('fr')">FR</button>
+        </div>
+
+        <a href="https://contra.com/rayan_hedadou_2n61wa0n/services" target="_blank" rel="noopener" class="btn-dark" data-i18n="nav_hire">
+          Hire on Contra ↗
+        </a>
+
+        <!-- Feature 14: Clean Mobile Hamburger Menu Button -->
+        <button type="button" class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle Menu">☰</button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-drawer" class="mobile-drawer">
+      <a href="#services" onclick="toggleMobileMenu()" data-i18n="nav_services">Services</a>
+      <a href="#work" onclick="toggleMobileMenu()" data-i18n="nav_work">Selected Work</a>
+      <a href="#proof" onclick="toggleMobileMenu()" data-i18n="nav_proof">Code &amp; ROI</a>
+      <a href="#faq" onclick="toggleMobileMenu()" data-i18n="nav_faq">FAQ</a>
+      <a href="https://www.linkedin.com/in/rayane-haddadou/" target="_blank" rel="noopener">LinkedIn Profile ↗</a>
+      <a href="https://contra.com/rayan_hedadou_2n61wa0n/services" target="_blank" rel="noopener" class="btn-dark" style="color:#FFFFFF;text-align:center;margin-top:4px;" data-i18n="nav_hire">Hire on Contra ↗</a>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-top-row">
+        <div class="availability-pill">
+          <span class="avail-dot"></span>
+          <span data-i18n="hero_avail">Available for new projects • 24–48h Turnaround • 0% Commission on Contra</span>
+        </div>
+        <div class="sla-pill" data-i18n="hero_sla">⚡ Typical response: Under 15 mins</div>
+      </div>
+
+      <h1 class="hero-title" data-i18n="hero_title">
+        I fix, secure, and polish AI-built web applications for production.
+      </h1>
+
+      <p class="hero-desc" data-i18n="hero_desc">
+        Built 85% of your SaaS with Lovable, Bolt.new, Cursor, v0, or Replit and hit a wall before launch? I resolve your Stripe webhook errors, harden Supabase Auth &amp; Row Level Security (RLS), upgrade your UI/UX, and deploy cleanly to Vercel at a fixed price.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#services" class="btn-dark" data-i18n="hero_cta_primary">View Services &amp; Pricing</a>
+        <!-- Feature 6: Sample Audit Report Modal Trigger -->
+        <button type="button" class="btn-outline" onclick="openAuditModal()" data-i18n="hero_cta_sample">
+          📄 View Sample Audit Report
+        </button>
+        <a href="#triage" class="btn-outline" data-i18n="hero_cta_secondary">Free 15-Min Repo Triage</a>
+      </div>
+
+      <!-- Feature 3: Common Symptoms We Fix Daily -->
+      <div class="symptoms-box">
+        <span class="symp-label" data-i18n="symp_label">Common Bugs Fixed Daily:</span>
+        <span class="symp-chip">Stripe Webhook 400/500</span>
+        <span class="symp-chip">Supabase Auth Redirect Loop</span>
+        <span class="symp-chip">Missing RLS Policies</span>
+        <span class="symp-chip">Exposed API Keys</span>
+        <span class="symp-chip">Vercel Build Failed (tsc)</span>
+        <span class="symp-chip">Broken 375px Mobile UI</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES SECTION (COMPACT 3-COLUMN SIDE-BY-SIDE CARDS ON DESKTOP) -->
+  <section id="services" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="section-eyebrow" data-i18n="srv_eyebrow">Fixed-Price Packages</div>
+          <h2 class="section-title" data-i18n="srv_title">Services &amp; Direct Booking</h2>
+          <p class="section-subtitle" data-i18n="srv_subtitle">
+            Compare all 3 packages side-by-side. Click any image to zoom, or order directly via Contra Escrow (0% fee).
+          </p>
+        </div>
+      </div>
+
+      <!-- Compact 3-Column Grid -->
+      <div class="services-grid">
+        <!-- Service 1 ($150) -->
+        <div class="service-card">
+          <div>
+            <div class="srv-thumb" onclick="openLightbox('./s1_4x3_hero.png', 'Fix, Secure & Deploy Lovable, Bolt.new or Cursor AI Apps ($150)')">
+              <img src="./s1_4x3_hero.png" alt="Fix, Secure & Deploy Lovable, Bolt.new or Cursor AI Apps" />
+              <span class="zoom-hint" data-i18n="zoom_hint">🔍 Click to Zoom</span>
+            </div>
+            <div class="srv-top-meta">
+              <span class="srv-badge" data-i18n="s1_badge">Quick Rescue</span>
+              <span class="srv-turnaround" data-i18n="s1_time">⏱ 2 Days</span>
+            </div>
+            <h3 class="srv-title" data-i18n="s1_title">Fix, Secure &amp; Deploy Lovable, Bolt.new or Cursor AI Apps</h3>
+            <p class="srv-desc" data-i18n="s1_desc">
+              Surgical resolution for 1–2 critical launch blockers holding back your AI-built app, with live browser verification.
+            </p>
+            <ul class="srv-bullets">
+              <li data-i18n="s1_b1">Technical &amp; Security Triage Report</li>
+              <li data-i18n="s1_b2">Stripe Webhook or Supabase Auth Fix</li>
+              <li data-i18n="s1_b3">TypeScript &amp; Vercel Build Unblocking</li>
+              <li data-i18n="s1_b4">Clean GitHub Pull Request &amp; Live QA</li>
+            </ul>
+          </div>
+
+          <div class="srv-footer">
+            <div class="srv-price-wrap">
+              <span class="srv-price-lbl" data-i18n="price_fixed">Fixed Price</span>
+              <span class="srv-price-val">$150</span>
+            </div>
+            <a href="https://contra.com/s/OYe2OrsN-fix-secure-and-deploy-lovable-boltnew-or-cursor-ai-apps" target="_blank" rel="noopener" class="btn-dark" data-i18n="btn_order">
+              Order Service ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 2 ($450 - Most Popular) -->
+        <div class="service-card popular">
+          <div>
+            <div class="srv-thumb" onclick="openLightbox('./s2_4x3_hero.png', 'Production AI App Rescue: Auth, Stripe & SaaS UI/UX Polish ($450)')">
+              <img src="./s2_4x3_hero.png" alt="Production AI App Rescue: Auth, Stripe & SaaS UI/UX Polish" />
+              <span class="zoom-hint" data-i18n="zoom_hint">🔍 Click to Zoom</span>
+            </div>
+            <div class="srv-top-meta">
+              <span class="srv-badge highlight" data-i18n="s2_badge">★ Most Popular</span>
+              <span class="srv-turnaround" data-i18n="s2_time">⏱ 4 Days</span>
+            </div>
+            <h3 class="srv-title" data-i18n="s2_title">Production AI App Rescue: Auth, Stripe &amp; SaaS UI/UX Polish</h3>
+            <p class="srv-desc" data-i18n="s2_desc">
+              Complete backend stabilization paired with an agency-grade UI/UX upgrade across desktop and mobile viewports.
+            </p>
+            <ul class="srv-bullets">
+              <li data-i18n="s2_b1">Full Stripe Checkout, Portal &amp; Webhooks</li>
+              <li data-i18n="s2_b2">Supabase SSR Auth &amp; Strict RLS Policies</li>
+              <li data-i18n="s2_b3">Responsive SaaS UI/UX Polish (Tailwind/shadcn)</li>
+              <li data-i18n="s2_b4">Playwright E2E + Lighthouse 95+ Audit</li>
+            </ul>
+          </div>
+
+          <div class="srv-footer">
+            <div class="srv-price-wrap">
+              <span class="srv-price-lbl" data-i18n="price_fixed">Fixed Price</span>
+              <span class="srv-price-val">$450</span>
+            </div>
+            <a href="https://contra.com/s/kBeLAYs6-production-ai-app-rescue-auth-stripe-and-saa-s-uiux-polish" target="_blank" rel="noopener" class="btn-dark" data-i18n="btn_order">
+              Order Service ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- Service 3 ($1,200) -->
+        <div class="service-card">
+          <div>
+            <div class="srv-thumb" onclick="openLightbox('./s3_4x3_hero.png', 'Full AI SaaS MVP Stabilization, UI Redesign & Scalable Launch ($1,200)')">
+              <img src="./s3_4x3_hero.png" alt="Full AI SaaS MVP Stabilization, UI Redesign & Scalable Launch" />
+              <span class="zoom-hint" data-i18n="zoom_hint">🔍 Click to Zoom</span>
+            </div>
+            <div class="srv-top-meta">
+              <span class="srv-badge" data-i18n="s3_badge">Full MVP Scale</span>
+              <span class="srv-turnaround" data-i18n="s3_time">⏱ 7 Days</span>
+            </div>
+            <h3 class="srv-title" data-i18n="s3_title">Full AI SaaS MVP Stabilization, UI Redesign &amp; Scalable Launch</h3>
+            <p class="srv-desc" data-i18n="s3_desc">
+              End-to-end transformation of your AI prototype into an investor-ready SaaS product with automated testing &amp; support.
+            </p>
+            <ul class="srv-bullets">
+              <li data-i18n="s3_b1">Database Schema Normalization &amp; Full RLS</li>
+              <li data-i18n="s3_b2">Stripe Subscriptions &amp; Transactional Emails</li>
+              <li data-i18n="s3_b3">Custom UI/UX Redesign &amp; Technical SEO</li>
+              <li data-i18n="s3_b4">Playwright Test Suite + 14-Day Support</li>
+            </ul>
+          </div>
+
+          <div class="srv-footer">
+            <div class="srv-price-wrap">
+              <span class="srv-price-lbl" data-i18n="price_fixed">Fixed Price</span>
+              <span class="srv-price-val">$1,200</span>
+            </div>
+            <a href="https://contra.com/s/c3RMrYNl-full-ai-saa-s-mvp-stabilization-ui-redesign-and-scalable-launch" target="_blank" rel="noopener" class="btn-dark" data-i18n="btn_order">
+              Order Service ↗
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 9: 3 Ironclad Client Guarantees -->
+      <div class="guarantees-grid">
+        <div class="guarantee-item">
+          <div class="g-icon">🔒</div>
+          <div>
+            <div class="g-title" data-i18n="g1_t">100% Escrow Payment Protection</div>
+            <p class="g-desc" data-i18n="g1_d">Funds are held safely in Contra Escrow and released only after you review and approve the working fix.</p>
+          </div>
+        </div>
+        <div class="guarantee-item">
+          <div class="g-icon">🛡️</div>
+          <div>
+            <div class="g-title" data-i18n="g2_t">Zero Regression Guarantee</div>
+            <p class="g-desc" data-i18n="g2_d">All changes are built on an isolated Git branch (rescue/production-fix) so existing features never break.</p>
+          </div>
+        </div>
+        <div class="guarantee-item">
+          <div class="g-icon">🔑</div>
+          <div>
+            <div class="g-title" data-i18n="g3_t">Strict Code &amp; Key Security</div>
+            <p class="g-desc" data-i18n="g3_d">Never share live secrets in chat. We verify everything using Stripe Test Mode and encrypted Vercel variables.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 13: Standard Delivery Quality Gate -->
+      <div class="quality-strip">
+        <span class="q-title" data-i18n="q_title">Mandatory Quality Gate Before Handoff:</span>
+        <div class="q-items">
+          <span class="q-item">✓ tsc --noEmit (0 Errors)</span>
+          <span class="q-item">✓ pnpm build (Passing)</span>
+          <span class="q-item">✓ Supabase RLS Enabled</span>
+          <span class="q-item">✓ Playwright Desktop &amp; Mobile QA</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SELECTED WORK / PORTFOLIO CASE STUDIES + FEATURE 10 (1-CLICK FILTER) -->
+  <section id="work" class="section" style="background:#FFFFFF;">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="section-eyebrow" data-i18n="work_eyebrow">Portfolio &amp; Case Studies</div>
+          <h2 class="section-title" data-i18n="work_title">Selected Rescue &amp; UI/UX Projects</h2>
+          <p class="section-subtitle" data-i18n="work_subtitle">
+            Click any project image to view full-resolution architectural diagrams, or toggle between Slide 1 and Slide 2.
+          </p>
+        </div>
+
+        <!-- Feature 10: 1-Click Portfolio Filter -->
+        <div class="filter-bar">
+          <button type="button" class="filter-btn active" onclick="filterProjects('all', this)" data-i18n="f_all">All (4)</button>
+          <button type="button" class="filter-btn" onclick="filterProjects('backend', this)" data-i18n="f_backend">Stripe &amp; Supabase</button>
+          <button type="button" class="filter-btn" onclick="filterProjects('uiux', this)" data-i18n="f_uiux">UI/UX &amp; CRO</button>
+          <button type="button" class="filter-btn" onclick="filterProjects('deploy', this)" data-i18n="f_deploy">Build &amp; Vercel</button>
+        </div>
+      </div>
+
+      <div class="work-grid">
+        <!-- Project 1 -->
+        <article class="work-card" data-category="backend">
+          <div class="work-media">
+            <img id="p1-img" src="./p1_stripe_cover.png" alt="PulseAI Stripe Webhook & Subscription Sync Rescue" onclick="openLightbox(this.src, 'PulseAI — Stripe Webhook & Subscription Sync Rescue')" />
+            <div class="work-slide-tabs">
+              <button type="button" class="work-tab-btn active" onclick="switchWorkImg('p1-img', './p1_stripe_cover.png', this)" data-i18n="tab_s1">Slide 1</button>
+              <button type="button" class="work-tab-btn" onclick="switchWorkImg('p1-img', './p1_stripe_arch.png', this)" data-i18n="tab_s2">Slide 2</button>
+            </div>
+          </div>
+          <div class="work-content">
+            <div>
+              <div class="work-tags">
+                <span class="work-tag">Lovable.dev</span>
+                <span class="work-tag">Next.js 15</span>
+                <span class="work-tag">Stripe Webhooks</span>
+                <span class="work-tag">Supabase</span>
+              </div>
+              <h3 class="work-title" data-i18n="w1_title">PulseAI — Stripe Webhook &amp; Subscription Sync Rescue</h3>
+              <p class="work-summary" data-i18n="w1_desc">
+                Fixed 400/500 Stripe signature errors using raw buffer verification, implemented an idempotent PostgreSQL event ledger, and synchronized subscription lifecycle states.
+              </p>
+            </div>
+            <div class="work-footer">
+              <span class="work-metric" data-i18n="w1_metric">✓ 200 OK • 100% DB Sync</span>
+              <a href="https://contra.com/p/AAmXom2M-pulse-ai-stripe-webhook-and-subscription-sync-rescue" target="_blank" rel="noopener" class="work-link" data-i18n="view_project">View on Contra ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="work-card" data-category="backend">
+          <div class="work-media">
+            <img id="p2-img" src="./p2_supabase_cover.png" alt="DocuFlow AI Supabase SSR Auth & RLS Security Hardening" onclick="openLightbox(this.src, 'DocuFlow AI — Supabase SSR Auth & RLS Security Hardening')" />
+            <div class="work-slide-tabs">
+              <button type="button" class="work-tab-btn active" onclick="switchWorkImg('p2-img', './p2_supabase_cover.png', this)" data-i18n="tab_s1">Slide 1</button>
+              <button type="button" class="work-tab-btn" onclick="switchWorkImg('p2-img', './p2_supabase_rls.png', this)" data-i18n="tab_s2">Slide 2</button>
+            </div>
+          </div>
+          <div class="work-content">
+            <div>
+              <div class="work-tags">
+                <span class="work-tag">Bolt.new</span>
+                <span class="work-tag">Supabase Auth</span>
+                <span class="work-tag">PostgreSQL RLS</span>
+                <span class="work-tag">@supabase/ssr</span>
+              </div>
+              <h3 class="work-title" data-i18n="w2_title">DocuFlow AI — Supabase SSR Auth &amp; RLS Security Hardening</h3>
+              <p class="work-summary" data-i18n="w2_desc">
+                Eliminated infinite OAuth login loops with server-verified @supabase/ssr middleware and locked down 12 publicly exposed database tables with strict Row Level Security policies.
+              </p>
+            </div>
+            <div class="work-footer">
+              <span class="work-metric" data-i18n="w2_metric">✓ 12/12 Tables RLS Secured</span>
+              <a href="https://contra.com/p/7YkXmlBF-docu-flow-ai-supabase-ssr-auth-and-rls-security-hardening" target="_blank" rel="noopener" class="work-link" data-i18n="view_project">View on Contra ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="work-card" data-category="uiux">
+          <div class="work-media">
+            <img id="p3-img" src="./p3_uiux_cover.png" alt="SaaS UI/UX Redesign & Conversion Optimization" onclick="openLightbox(this.src, 'SaaS UI/UX Redesign & Conversion Optimization (CRO)')" />
+            <div class="work-slide-tabs">
+              <button type="button" class="work-tab-btn active" onclick="switchWorkImg('p3-img', './p3_uiux_cover.png', this)" data-i18n="tab_s1">Slide 1</button>
+              <button type="button" class="work-tab-btn" onclick="switchWorkImg('p3-img', './p3_uiux_cro.png', this)" data-i18n="tab_s2">Slide 2</button>
+            </div>
+          </div>
+          <div class="work-content">
+            <div>
+              <div class="work-tags">
+                <span class="work-tag">UI/UX Design</span>
+                <span class="work-tag">Tailwind CSS</span>
+                <span class="work-tag">shadcn/ui</span>
+                <span class="work-tag">Figma</span>
+              </div>
+              <h3 class="work-title" data-i18n="w3_title">SaaS UI/UX Redesign &amp; Conversion Optimization (CRO)</h3>
+              <p class="work-summary" data-i18n="w3_desc">
+                Upgraded a generic AI-generated template into a clean, responsive SaaS product with refined typography, mobile-first breakpoints (375px/768px/1440px), and a 99 Lighthouse score.
+              </p>
+            </div>
+            <div class="work-footer">
+              <span class="work-metric" data-i18n="w3_metric">✓ 99/100 Lighthouse Score</span>
+              <a href="https://contra.com/p/qXmZ36UE-saa-s-uiux-redesign-and-conversion-optimization-cro" target="_blank" rel="noopener" class="work-link" data-i18n="view_project">View on Contra ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="work-card" data-category="deploy">
+          <div class="work-media">
+            <img id="p4-img" src="./p4_vercel_cover.png" alt="LaunchPad AI TypeScript Build Rescue, Vercel Deploy & SEO" onclick="openLightbox(this.src, 'LaunchPad AI — TypeScript Build Rescue, Vercel Deploy & SEO')" />
+            <div class="work-slide-tabs">
+              <button type="button" class="work-tab-btn active" onclick="switchWorkImg('p4-img', './p4_vercel_cover.png', this)" data-i18n="tab_s1">Slide 1</button>
+              <button type="button" class="work-tab-btn" onclick="switchWorkImg('p4-img', './p4_vercel_seo.png', this)" data-i18n="tab_s2">Slide 2</button>
+            </div>
+          </div>
+          <div class="work-content">
+            <div>
+              <div class="work-tags">
+                <span class="work-tag">Cursor AI</span>
+                <span class="work-tag">TypeScript</span>
+                <span class="work-tag">Vercel</span>
+                <span class="work-tag">Technical SEO</span>
+              </div>
+              <h3 class="work-title" data-i18n="w4_title">LaunchPad AI — TypeScript Build Rescue, Vercel Deploy &amp; SEO</h3>
+              <p class="work-summary" data-i18n="w4_desc">
+                Resolved 47 strict TypeScript compilation errors and React hydration mismatches, configured runtime environment validation, and deployed cleanly to Vercel Production.
+              </p>
+            </div>
+            <div class="work-footer">
+              <span class="work-metric" data-i18n="w4_metric">✓ 47→0 Build Errors</span>
+              <a href="https://contra.com/p/eWRNvkEk-launch-pad-ai-type-script-build-rescue-vercel-deploy-and-seo" target="_blank" rel="noopener" class="work-link" data-i18n="view_project">View on Contra ↗</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE 7 (SURGICAL CODE DIFF) & FEATURE 8 (COST/TIME ROI COMPARISON) -->
+  <section id="proof" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="section-eyebrow" data-i18n="proof_eyebrow">Engineering Precision &amp; ROI</div>
+          <h2 class="section-title" data-i18n="proof_title">Why Surgical Engineering Beats Prompt Loops</h2>
+          <p class="section-subtitle" data-i18n="proof_subtitle">
+            Real examples of root-cause code fixes versus burning hundreds of dollars on AI token loops or open-ended hourly billing.
+          </p>
+        </div>
+      </div>
+
+      <div class="split-proof-grid">
+        <!-- Feature 7: Code Diff Preview -->
+        <div class="proof-box">
+          <div>
+            <div class="diff-tabs">
+              <button type="button" class="diff-tab active" onclick="switchCodeTab('stripe', this)">Stripe Webhook Fix</button>
+              <button type="button" class="diff-tab" onclick="switchCodeTab('supabase', this)">Supabase RLS Fix</button>
+            </div>
+
+            <div id="code-stripe" class="code-compare">
+              <div class="code-snippet bad">
+                <strong>// ✕ Broken AI Code (Causes 400 Signature Error)</strong><br>
+                const body = await req.json(); // Corrupts raw buffer!<br>
+                const event = stripe.webhooks.constructEvent(body, sig, secret);
+              </div>
+              <div class="code-snippet good">
+                <strong>// ✓ Rescued Production Code (Verified 200 OK)</strong><br>
+                const rawBody = await req.text(); // Preserves exact signature<br>
+                const event = stripe.webhooks.constructEvent(rawBody, sig, secret);<br>
+                await upsertIdempotentSubscription(event.id, event.data.object);
+              </div>
+            </div>
+
+            <div id="code-supabase" class="code-compare" style="display:none;">
+              <div class="code-snippet bad">
+                <strong>-- ✕ Broken AI Policy (Exposes All Customer Rows!)</strong><br>
+                CREATE POLICY "Public Access" ON public.subscriptions<br>
+                FOR SELECT USING (true);
+              </div>
+              <div class="code-snippet good">
+                <strong>-- ✓ Hardened Zero-Trust RLS Policy</strong><br>
+                ALTER TABLE public.subscriptions ENABLE ROW LEVEL SECURITY;<br>
+                CREATE POLICY "Tenant Isolation" ON public.subscriptions<br>
+                FOR ALL TO authenticated USING (auth.uid() = user_id);
+              </div>
+            </div>
+          </div>
+          <p style="font-size:12.5px;color:var(--text-muted);margin-top:12px;" data-i18n="diff_note">
+            Every fix is tested locally via Stripe CLI &amp; Playwright before merging into your repository.
+          </p>
+        </div>
+
+        <!-- Feature 8: Token Burn / Hourly vs Fixed-Price Rescue ROI -->
+        <div class="proof-box">
+          <div>
+            <h3 style="font-size:18px;font-weight:700;margin-bottom:6px;" data-i18n="roi_heading">Cost &amp; Time Comparison</h3>
+            <p style="font-size:13.5px;color:var(--text-secondary);margin-bottom:14px;" data-i18n="roi_sub">
+              Predictable fixed-price delivery vs. traditional alternatives:
+            </p>
+
+            <div class="roi-cards">
+              <div class="roi-row bad">
+                <div>
+                  <div class="roi-title" data-i18n="roi1_t">AI Prompt Fix-Loops (Lovable / Bolt)</div>
+                  <div class="roi-sub" data-i18n="roi1_d">Fixing one bug breaks two working features</div>
+                </div>
+                <span class="roi-val" style="color:var(--red-text);">$300+ &amp; Weeks Lost</span>
+              </div>
+
+              <div class="roi-row bad">
+                <div>
+                  <div class="roi-title" data-i18n="roi2_t">Open-Ended Hourly Freelancer</div>
+                  <div class="roi-sub" data-i18n="roi2_d">Slow onboarding &amp; unpredictable billing</div>
+                </div>
+                <span class="roi-val" style="color:var(--text-secondary);">$800 – $2,000+</span>
+              </div>
+
+              <div class="roi-row good">
+                <div>
+                  <div class="roi-title" data-i18n="roi3_t">Surgical Fixed-Price Rescue (With Me)</div>
+                  <div class="roi-sub" data-i18n="roi3_d">Root-cause fix, RLS audit &amp; Playwright QA</div>
+                </div>
+                <span class="roi-val" style="color:var(--green-text);">$150 Fixed • 48h</span>
+              </div>
+            </div>
+          </div>
+          <a href="#services" class="btn-dark" style="width:100%;margin-top:16px;" data-i18n="roi_cta">Choose Your Fixed-Price Package</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKFLOW (3 STEPS) + FEATURE 2 (ACCORDION FAQ) -->
+  <section id="faq" class="section" style="background:#FFFFFF;">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="section-eyebrow" data-i18n="proc_eyebrow">Workflow &amp; FAQ</div>
+          <h2 class="section-title" data-i18n="proc_title">How We Work &amp; Common Questions</h2>
+        </div>
+      </div>
+
+      <div class="process-grid">
+        <div class="process-card">
+          <div class="process-step" data-i18n="step1_num">Step 01 • Diagnostic</div>
+          <h3 class="process-title" data-i18n="step1_title">Repository Triage &amp; Audit</h3>
+          <p class="process-desc" data-i18n="step1_desc">
+            Share your GitHub repository or preview link. I inspect your build errors, Supabase RLS rules, and Stripe webhook logs to confirm the exact scope.
+          </p>
+        </div>
+
+        <div class="process-card">
+          <div class="process-step" data-i18n="step2_num">Step 02 • Execution</div>
+          <h3 class="process-title" data-i18n="step2_title">Surgical Fix &amp; UI/UX Polish</h3>
+          <p class="process-desc" data-i18n="step2_desc">
+            I fix your backend, auth, and payment blockers on an isolated Git branch while preserving working features, and polish the responsive UI.
+          </p>
+        </div>
+
+        <div class="process-card">
+          <div class="process-step" data-i18n="step3_num">Step 03 • Verification</div>
+          <h3 class="process-title" data-i18n="step3_title">Live QA &amp; Production Deploy</h3>
+          <p class="process-desc" data-i18n="step3_desc">
+            Every flow is tested on desktop and mobile via Playwright with zero console errors, deployed to Vercel production, and handed off cleanly.
+          </p>
+        </div>
+      </div>
+
+      <!-- Feature 2: Clean Accordion FAQ -->
+      <div class="faq-list">
+        <div class="faq-item open">
+          <button type="button" class="faq-q" onclick="toggleFaq(this)">
+            <span data-i18n="faq1_q">1. How do I share my codebase safely without exposing live secret keys?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a" data-i18n="faq1_a">
+            You simply invite my GitHub account as a collaborator on your repository. You never send live Stripe or Supabase secret keys in chat—we test using sandbox/test keys first and configure production secrets directly inside your encrypted Vercel environment settings.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" onclick="toggleFaq(this)">
+            <span data-i18n="faq2_q">2. Will fixing my bugs break other features that already work?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a" data-i18n="faq2_a">
+            No. Unlike AI prompt tools that rewrite entire files randomly, I work on a dedicated Git branch (rescue/production-fix) with surgical, minimal code diffs and run full TypeScript build and Playwright E2E checks before merging.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" onclick="toggleFaq(this)">
+            <span data-i18n="faq3_q">3. How does payment protection work on Contra?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a" data-i18n="faq3_a">
+            Contra holds your fixed-price payment safely in Escrow with 0% platform commission. Funds are only released once I deliver the verified working application and you approve the handoff.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button type="button" class="faq-q" onclick="toggleFaq(this)">
+            <span data-i18n="faq4_q">4. What if I'm not sure which package ($150 vs $450 vs $1,200) fits my app?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a" data-i18n="faq4_a">
+            Use the Free 15-Minute Repo Triage box below to copy a quick 3-line brief and message me on Contra. I will check your error logs for free and tell you the exact package needed before you order.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE 5 & 12: FREE 15-MIN REPO TRIAGE CARD + 1-CLICK COPY BRIEF -->
+  <section id="triage" class="section">
+    <div class="container">
+      <div class="triage-card">
+        <div>
+          <div class="section-eyebrow" data-i18n="tr_eye">Not Sure Which Package Fits?</div>
+          <h2 class="section-title" data-i18n="tr_title">Get a Free 15-Minute Diagnostic Audit</h2>
+          <p class="section-subtitle" style="margin-bottom:18px;" data-i18n="tr_desc">
+            Send me your GitHub repo or preview URL on Contra before ordering. I will inspect your build/webhook logs and reply within 15 minutes with the root cause and exact fixed-price scope.
+          </p>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;">
+            <button type="button" class="btn-dark" onclick="copyBriefAndOpenContra()" id="copy-brief-btn" data-i18n="tr_btn_copy">
+              📋 Copy Brief &amp; Message on Contra ↗
+            </button>
+            <a href="https://contra.com/rayan_hedadou_2n61wa0n" target="_blank" rel="noopener" class="btn-outline" data-i18n="tr_btn_direct">
+              Open Contra Profile ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- Feature 12: 1-Click Copy Brief Template -->
+        <div class="brief-box">
+          <div class="brief-header">
+            <span data-i18n="tr_box_lbl">QUICK MESSAGE TEMPLATE</span>
+            <span class="mono" style="color:var(--green-text);" id="copy-status">READY TO COPY</span>
+          </div>
+          <div class="brief-pre" id="brief-template">Hi Rayane, I need a quick diagnostic audit for my AI app:
+1. Built with: [Lovable / Bolt.new / Cursor / Next.js]
+2. Main blocker: [Stripe Webhook / Supabase Auth & RLS / UI / Build]
+3. Repo or Preview URL: [Paste Link]</div>
+          <p style="font-size:12px;color:var(--text-muted);" data-i18n="tr_box_hint">
+            Click the button to copy this template and open Contra chat automatically.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="brand-name">Rayane Haddadou</div>
+        <p class="footer-copy" data-i18n="footer_copy">
+          Full-Stack AI App Rescue &amp; SaaS UI/UX Architect • Timezone: CET (GMT+1)
+        </p>
+      </div>
+
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="https://contra.com/rayan_hedadou_2n61wa0n/services" target="_blank" rel="noopener" class="btn-dark" data-i18n="footer_contra">
+          Book on Contra (0% Fee) ↗
+        </a>
+        <a href="https://www.linkedin.com/in/rayane-haddadou/" target="_blank" rel="noopener" class="btn-outline">
+          LinkedIn ↗
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FEATURE 4: STICKY MOBILE BOTTOM CTA BAR -->
+  <div class="mobile-sticky-cta">
+    <div>
+      <div style="font-size:12px;font-weight:700;color:var(--text-primary);" data-i18n="mob_cta_t">Available Now • Fixed Price</div>
+      <div style="font-size:11.5px;color:var(--green-text);font-weight:600;" data-i18n="mob_cta_s">Packages from $150 • 0% Fee</div>
+    </div>
+    <a href="https://contra.com/rayan_hedadou_2n61wa0n/services" target="_blank" rel="noopener" class="btn-dark" style="padding:8px 14px;font-size:13px;" data-i18n="nav_hire">
+      Hire on Contra ↗
+    </a>
+  </div>
+
+  <!-- FEATURE 1: FULL-RES IMAGE LIGHTBOX MODAL -->
+  <div id="lightbox-modal" class="modal-backdrop" onclick="closeLightbox(event)">
+    <div class="lightbox-box" onclick="event.stopPropagation()">
+      <div class="modal-top">
+        <span class="modal-title" id="lightbox-caption">Preview</span>
+        <button type="button" class="modal-close" onclick="closeLightbox()">✕ Close</button>
+      </div>
+      <div class="lightbox-img-wrap">
+        <img id="lightbox-img" src="" alt="Full resolution preview" />
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURE 6: SAMPLE DIAGNOSTIC AUDIT REPORT MODAL -->
+  <div id="audit-modal" class="modal-backdrop" onclick="closeAuditModal(event)">
+    <div class="lightbox-box" style="max-width:740px;" onclick="event.stopPropagation()">
+      <div class="modal-top">
+        <span class="modal-title">Sample Deliverable — 02_AUDIT_LOG.md (Diagnostic Report)</span>
+        <button type="button" class="modal-close" onclick="closeAuditModal()">✕ Close</button>
+      </div>
+      <div class="audit-modal-body">
+        <p>Every order begins with an automated &amp; manual repository triage report like this before any code is modified:</p>
+        <div class="audit-log-block">
+<strong># Technical Rescue Audit Report — PulseAI SaaS (Next.js 15 + Supabase + Stripe)</strong><br><br>
+<strong>[P0 CRITICAL BLOCKER] Stripe Webhook 400 Bad Request</strong><br>
+• File: <code>app/api/webhooks/stripe/route.ts:14</code><br>
+• Root Cause: Route calls <code>await req.json()</code> before <code>stripe.webhooks.constructEvent()</code>, invalidating the HMAC signature.<br>
+• Surgical Fix: Read raw buffer via <code>await req.text()</code> + add idempotent <code>stripe_events</code> check.<br><br>
+<strong>[P1 SECURITY GAP] Public Tables Missing Row Level Security (RLS)</strong><br>
+• Tables: <code>public.profiles</code>, <code>public.subscriptions</code>, <code>public.api_keys</code><br>
+• Root Cause: RLS disabled in Bolt/Lovable migration; anon key can read all customer rows.<br>
+• Surgical Fix: Enable RLS + enforce <code>auth.uid() = user_id</code> policies.<br><br>
+<strong>[P2 UI/UX &amp; BUILD] 375px Mobile Overflow &amp; 14 TypeScript Errors</strong><br>
+• Verification Gate: <code>tsc --noEmit (0 errors)</code> • <code>Playwright Desktop/Mobile QA (Passed)</code>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Feature 11: Live CET Clock
+    function updateCetClock() {
+      try {
+        const now = new Date();
+        const cet = now.toLocaleTimeString('en-GB', { timeZone: 'Africa/Algiers', hour: '2-digit', minute: '2-digit' });
+        const el = document.getElementById('live-cet-time');
+        if (el) el.textContent = `CET ${cet} (GMT+1)`;
+      } catch (e) {}
+    }
+    updateCetClock();
+    setInterval(updateCetClock, 30000);
+
+    // Feature 14: Mobile Drawer Toggle
+    function toggleMobileMenu() {
+      document.getElementById('mobile-drawer').classList.toggle('open');
+    }
+
+    // Portfolio Slide Switcher
+    function switchWorkImg(imgId, src, btn) {
+      const img = document.getElementById(imgId);
+      if (img) img.src = src;
+      btn.parentElement.querySelectorAll('.work-tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
+    // Feature 10: 1-Click Portfolio Filter
+    function filterProjects(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.work-card').forEach(card => {
+        const c = card.getAttribute('data-category');
+        card.classList.toggle('hidden', cat !== 'all' && c !== cat);
+      });
+    }
+
+    // Feature 7: Code Diff Switcher
+    function switchCodeTab(tab, btn) {
+      document.querySelectorAll('.diff-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('code-stripe').style.display = tab === 'stripe' ? 'flex' : 'none';
+      document.getElementById('code-supabase').style.display = tab === 'supabase' ? 'flex' : 'none';
+    }
+
+    // Feature 2: Accordion FAQ
+    function toggleFaq(btn) {
+      btn.parentElement.classList.toggle('open');
+    }
+
+    // Feature 1: Lightbox Modal
+    function openLightbox(src, caption) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox-caption').textContent = caption || 'Preview';
+      document.getElementById('lightbox-modal').classList.add('open');
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox-modal').classList.remove('open');
+    }
+
+    // Feature 6: Sample Audit Report Modal
+    function openAuditModal() {
+      document.getElementById('audit-modal').classList.add('open');
+    }
+    function closeAuditModal() {
+      document.getElementById('audit-modal').classList.remove('open');
+    }
+
+    // Feature 12: 1-Click Copy Brief & Open Contra
+    function copyBriefAndOpenContra() {
+      const text = document.getElementById('brief-template').textContent;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).catch(() => {});
+      }
+      const status = document.getElementById('copy-status');
+      if (status) status.textContent = '✓ COPIED TO CLIPBOARD!';
+      window.open('https://contra.com/rayan_hedadou_2n61wa0n', '_blank', 'noopener');
+    }
+
+    // Full 100% EN / FR Bilingual Dictionary
+    const i18n = {
+      en: {
+        brand_sub: "AI App Rescue & Full-Stack Architect",
+        nav_services: "Services",
+        nav_work: "Selected Work",
+        nav_proof: "Code & ROI",
+        nav_faq: "FAQ",
+        nav_hire: "Hire on Contra ↗",
+        hero_avail: "Available for new projects • 24–48h Turnaround • 0% Commission on Contra",
+        hero_sla: "⚡ Typical response: Under 15 mins",
+        hero_title: "I fix, secure, and polish AI-built web applications for production.",
+        hero_desc: "Built 85% of your SaaS with Lovable, Bolt.new, Cursor, v0, or Replit and hit a wall before launch? I resolve your Stripe webhook errors, harden Supabase Auth & Row Level Security (RLS), upgrade your UI/UX, and deploy cleanly to Vercel at a fixed price.",
+        hero_cta_primary: "View Services & Pricing",
+        hero_cta_sample: "📄 View Sample Audit Report",
+        hero_cta_secondary: "Free 15-Min Repo Triage",
+        symp_label: "Common Bugs Fixed Daily:",
+        srv_eyebrow: "Fixed-Price Packages",
+        srv_title: "Services & Direct Booking",
+        srv_subtitle: "Compare all 3 packages side-by-side. Click any image to zoom, or order directly via Contra Escrow (0% fee).",
+        zoom_hint: "🔍 Click to Zoom",
+        s1_badge: "Quick Rescue",
+        s1_time: "⏱ 2 Days",
+        s1_title: "Fix, Secure & Deploy Lovable, Bolt.new or Cursor AI Apps",
+        s1_desc: "Surgical resolution for 1–2 critical launch blockers holding back your AI-built app, with live browser verification.",
+        s1_b1: "Technical & Security Triage Report",
+        s1_b2: "Stripe Webhook or Supabase Auth Fix",
+        s1_b3: "TypeScript & Vercel Build Unblocking",
+        s1_b4: "Clean GitHub Pull Request & Live QA",
+        s2_badge: "★ Most Popular",
+        s2_time: "⏱ 4 Days",
+        s2_title: "Production AI App Rescue: Auth, Stripe & SaaS UI/UX Polish",
+        s2_desc: "Complete backend stabilization paired with an agency-grade UI/UX upgrade across desktop and mobile viewports.",
+        s2_b1: "Full Stripe Checkout, Portal & Webhooks",
+        s2_b2: "Supabase SSR Auth & Strict RLS Policies",
+        s2_b3: "Responsive SaaS UI/UX Polish (Tailwind/shadcn)",
+        s2_b4: "Playwright E2E + Lighthouse 95+ Audit",
+        s3_badge: "Full MVP Scale",
+        s3_time: "⏱ 7 Days",
+        s3_title: "Full AI SaaS MVP Stabilization, UI Redesign & Scalable Launch",
+        s3_desc: "End-to-end transformation of your AI prototype into an investor-ready SaaS product with automated testing & support.",
+        s3_b1: "Database Schema Normalization & Full RLS",
+        s3_b2: "Stripe Subscriptions & Transactional Emails",
+        s3_b3: "Custom UI/UX Redesign & Technical SEO",
+        s3_b4: "Playwright Test Suite + 14-Day Support",
+        price_fixed: "Fixed Price",
+        btn_order: "Order Service ↗",
+        g1_t: "100% Escrow Payment Protection",
+        g1_d: "Funds are held safely in Contra Escrow and released only after you review and approve the working fix.",
+        g2_t: "Zero Regression Guarantee",
+        g2_d: "All changes are built on an isolated Git branch (rescue/production-fix) so existing features never break.",
+        g3_t: "Strict Code & Key Security",
+        g3_d: "Never share live secrets in chat. We verify everything using Stripe Test Mode and encrypted Vercel variables.",
+        q_title: "Mandatory Quality Gate Before Handoff:",
+        work_eyebrow: "Portfolio & Case Studies",
+        work_title: "Selected Rescue & UI/UX Projects",
+        work_subtitle: "Click any project image to view full-resolution architectural diagrams, or toggle between Slide 1 and Slide 2.",
+        f_all: "All (4)",
+        f_backend: "Stripe & Supabase",
+        f_uiux: "UI/UX & CRO",
+        f_deploy: "Build & Vercel",
+        tab_s1: "Slide 1",
+        tab_s2: "Slide 2",
+        w1_title: "PulseAI — Stripe Webhook & Subscription Sync Rescue",
+        w1_desc: "Fixed 400/500 Stripe signature errors using raw buffer verification, implemented an idempotent PostgreSQL event ledger, and synchronized subscription lifecycle states.",
+        w1_metric: "✓ 200 OK • 100% DB Sync",
+        w2_title: "DocuFlow AI — Supabase SSR Auth & RLS Security Hardening",
+        w2_desc: "Eliminated infinite OAuth login loops with server-verified @supabase/ssr middleware and locked down 12 publicly exposed database tables with strict Row Level Security policies.",
+        w2_metric: "✓ 12/12 Tables RLS Secured",
+        w3_title: "SaaS UI/UX Redesign & Conversion Optimization (CRO)",
+        w3_desc: "Upgraded a generic AI-generated template into a clean, responsive SaaS product with refined typography, mobile-first breakpoints (375px/768px/1440px), and a 99 Lighthouse score.",
+        w3_metric: "✓ 99/100 Lighthouse Score",
+        w4_title: "LaunchPad AI — TypeScript Build Rescue, Vercel Deploy & SEO",
+        w4_desc: "Resolved 47 strict TypeScript compilation errors and React hydration mismatches, configured runtime environment validation, and deployed cleanly to Vercel Production.",
+        w4_metric: "✓ 47→0 Build Errors",
+        view_project: "View on Contra ↗",
+        proof_eyebrow: "Engineering Precision & ROI",
+        proof_title: "Why Surgical Engineering Beats Prompt Loops",
+        proof_subtitle: "Real examples of root-cause code fixes versus burning hundreds of dollars on AI token loops or open-ended hourly billing.",
+        diff_note: "Every fix is tested locally via Stripe CLI & Playwright before merging into your repository.",
+        roi_heading: "Cost & Time Comparison",
+        roi_sub: "Predictable fixed-price delivery vs. traditional alternatives:",
+        roi1_t: "AI Prompt Fix-Loops (Lovable / Bolt)",
+        roi1_d: "Fixing one bug breaks two working features",
+        roi2_t: "Open-Ended Hourly Freelancer",
+        roi2_d: "Slow onboarding & unpredictable billing",
+        roi3_t: "Surgical Fixed-Price Rescue (With Me)",
+        roi3_d: "Root-cause fix, RLS audit & Playwright QA",
+        roi_cta: "Choose Your Fixed-Price Package",
+        proc_eyebrow: "Workflow & FAQ",
+        proc_title: "How We Work & Common Questions",
+        step1_num: "Step 01 • Diagnostic",
+        step1_title: "Repository Triage & Audit",
+        step1_desc: "Share your GitHub repository or preview link. I inspect your build errors, Supabase RLS rules, and Stripe webhook logs to confirm the exact scope.",
+        step2_num: "Step 02 • Execution",
+        step2_title: "Surgical Fix & UI/UX Polish",
+        step2_desc: "I fix your backend, auth, and payment blockers on an isolated Git branch while preserving working features, and polish the responsive UI.",
+        step3_num: "Step 03 • Verification",
+        step3_title: "Live QA & Production Deploy",
+        step3_desc: "Every flow is tested on desktop and mobile via Playwright with zero console errors, deployed to Vercel production, and handed off cleanly.",
+        faq1_q: "1. How do I share my codebase safely without exposing live secret keys?",
+        faq1_a: "You simply invite my GitHub account as a collaborator on your repository. You never send live Stripe or Supabase secret keys in chat—we test using sandbox/test keys first and configure production secrets directly inside your encrypted Vercel environment settings.",
+        faq2_q: "2. Will fixing my bugs break other features that already work?",
+        faq2_a: "No. Unlike AI prompt tools that rewrite entire files randomly, I work on a dedicated Git branch (rescue/production-fix) with surgical, minimal code diffs and run full TypeScript build and Playwright E2E checks before merging.",
+        faq3_q: "3. How does payment protection work on Contra?",
+        faq3_a: "Contra holds your fixed-price payment safely in Escrow with 0% platform commission. Funds are only released once I deliver the verified working application and you approve the handoff.",
+        faq4_q: "4. What if I'm not sure which package ($150 vs $450 vs $1,200) fits my app?",
+        faq4_a: "Use the Free 15-Minute Repo Triage box below to copy a quick 3-line brief and message me on Contra. I will check your error logs for free and tell you the exact package needed before you order.",
+        tr_eye: "Not Sure Which Package Fits?",
+        tr_title: "Get a Free 15-Minute Diagnostic Audit",
+        tr_desc: "Send me your GitHub repo or preview URL on Contra before ordering. I will inspect your build/webhook logs and reply within 15 minutes with the root cause and exact fixed-price scope.",
+        tr_btn_copy: "📋 Copy Brief & Message on Contra ↗",
+        tr_btn_direct: "Open Contra Profile ↗",
+        tr_box_lbl: "QUICK MESSAGE TEMPLATE",
+        tr_box_hint: "Click the button to copy this template and open Contra chat automatically.",
+        footer_copy: "Full-Stack AI App Rescue & SaaS UI/UX Architect • Timezone: CET (GMT+1)",
+        footer_contra: "Book on Contra (0% Fee) ↗",
+        mob_cta_t: "Available Now • Fixed Price",
+        mob_cta_s: "Packages from $150 • 0% Fee"
+      },
+      fr: {
+        brand_sub: "Architecte Full-Stack & Sauvetage d'Apps IA",
+        nav_services: "Services",
+        nav_work: "Projets",
+        nav_proof: "Code & ROI",
+        nav_faq: "FAQ",
+        nav_hire: "Engager sur Contra ↗",
+        hero_avail: "Disponible pour nouveaux projets • Livraison 24–48h • 0% de commission sur Contra",
+        hero_sla: "⚡ Réponse habituelle : Moins de 15 min",
+        hero_title: "Je corrige, sécurise et finalise vos applications web IA pour la mise en production.",
+        hero_desc: "Vous avez construit 85% de votre SaaS avec Lovable, Bolt.new, Cursor, v0 ou Replit et bloquez avant le lancement ? Je résous vos erreurs Stripe Webhook, sécurise Supabase Auth & RLS, améliore votre design UI/UX et déploie proprement sur Vercel à prix fixe.",
+        hero_cta_primary: "Voir les Services & Tarifs",
+        hero_cta_sample: "📄 Voir un Exemple d'Audit",
+        hero_cta_secondary: "Diagnostic Gratuit en 15 Min",
+        symp_label: "Bugs Résolus Quotidiennement :",
+        srv_eyebrow: "Forfaits à Prix Fixe",
+        srv_title: "Services & Réservation Directe",
+        srv_subtitle: "Comparez les 3 forfaits côte à côte. Cliquez sur une image pour agrandir, ou commandez via Contra Escrow (0% de frais).",
+        zoom_hint: "🔍 Agrandir",
+        s1_badge: "Sauvetage Rapide",
+        s1_time: "⏱ 2 Jours",
+        s1_title: "Correction, Sécurisation & Déploiement d'Apps Lovable, Bolt.new ou Cursor",
+        s1_desc: "Résolution chirurgicale d'un ou deux blocages critiques empêchant la mise en ligne de votre application IA, avec vérification navigateur.",
+        s1_b1: "Rapport d'Audit Technique & Sécurité",
+        s1_b2: "Correction Stripe Webhook ou Supabase Auth",
+        s1_b3: "Déblocage Build TypeScript & Vercel",
+        s1_b4: "Pull Request GitHub Propre & Test Live",
+        s2_badge: "★ Le Plus Populaire",
+        s2_time: "⏱ 4 Jours",
+        s2_title: "Sauvetage Production App IA : Auth, Stripe & Design SaaS UI/UX",
+        s2_desc: "Stabilisation complète du backend associée à une refonte UI/UX professionnelle sur ordinateur et mobile.",
+        s2_b1: "Stripe Checkout, Portail Client & Webhooks",
+        s2_b2: "Supabase SSR Auth & Politiques RLS Strictes",
+        s2_b3: "Polissage UI/UX SaaS Responsive (Tailwind/shadcn)",
+        s2_b4: "Tests E2E Playwright + Score Lighthouse 95+",
+        s3_badge: "MVP Complet & Scale",
+        s3_time: "⏱ 7 Jours",
+        s3_title: "Stabilisation Complète MVP SaaS IA, Refonte UI & Lancement Scalable",
+        s3_desc: "Transformation complète de votre prototype IA en un produit SaaS prêt pour les clients avec tests automatisés et support.",
+        s3_b1: "Normalisation Base de Données & Sécurité RLS",
+        s3_b2: "Abonnements Stripe & Emails Transactionnels",
+        s3_b3: "Refonte UI/UX Sur Mesure & SEO Technique",
+        s3_b4: "Suite de Tests Playwright + 14 Jours de Support",
+        price_fixed: "Tarif Fixe",
+        btn_order: "Commander ↗",
+        g1_t: "Protection Séquestre 100% (Escrow)",
+        g1_d: "Les fonds sont sécurisés sur Contra et débloqués uniquement après votre validation du correctif en production.",
+        g2_t: "Garantie Zéro Régression",
+        g2_d: "Tous les correctifs sont isolés sur une branche Git dédiée (rescue/production-fix) sans jamais casser l'existant.",
+        g3_t: "Sécurité Stricte du Code & des Clés",
+        g3_d: "Ne partagez jamais vos clés secrètes en chat. Nous testons en mode Sandbox et configurons Vercel de façon chiffrée.",
+        q_title: "Contrôle Qualité Obligatoire Avant Livraison :",
+        work_eyebrow: "Portfolio & Études de Cas",
+        work_title: "Projets de Sauvetage & Refonte UI/UX",
+        work_subtitle: "Cliquez sur n'importe quelle image pour l'agrandir en haute résolution, ou basculez entre Image 1 et Image 2.",
+        f_all: "Tous (4)",
+        f_backend: "Stripe & Supabase",
+        f_uiux: "UI/UX & CRO",
+        f_deploy: "Build & Vercel",
+        tab_s1: "Image 1",
+        tab_s2: "Image 2",
+        w1_title: "PulseAI — Sauvetage Stripe Webhook & Synchronisation d'Abonnements",
+        w1_desc: "Correction des erreurs de signature Stripe 400/500 via lecture brute du corps de requête, registre idempotent PostgreSQL et synchronisation du cycle d'abonnement.",
+        w1_metric: "✓ 200 OK • 100% Sync DB",
+        w2_title: "DocuFlow AI — Authentification Supabase SSR & Sécurisation RLS",
+        w2_desc: "Élimination des boucles OAuth grâce au middleware @supabase/ssr et verrouillage de 12 tables PostgreSQL exposées avec des politiques Row Level Security strictes.",
+        w2_metric: "✓ 12/12 Tables Sécurisées RLS",
+        w3_title: "Refonte UI/UX SaaS & Optimisation des Conversions (CRO)",
+        w3_desc: "Transformation d'une interface IA générique en un produit SaaS épuré et responsive (375px/768px/1440px) avec composants shadcn/ui et score Lighthouse 99/100.",
+        w3_metric: "✓ Score Lighthouse 99/100",
+        w4_title: "LaunchPad AI — Correction Build TypeScript, Déploiement Vercel & SEO",
+        w4_desc: "Résolution de 47 erreurs de compilation TypeScript et bugs d'hydratation React, validation des variables d'environnement avec Zod et déploiement sur Vercel.",
+        w4_metric: "✓ 47→0 Erreurs de Build",
+        view_project: "Voir sur Contra ↗",
+        proof_eyebrow: "Précision Technique & Rentabilité",
+        proof_title: "Pourquoi l'Ingénierie Chirurgicale Bat les Boucles de Prompts",
+        proof_subtitle: "Exemples concrets de correctifs code par rapport aux centaines de dollars perdus en crédits IA ou tarifs horaires flous.",
+        diff_note: "Chaque correctif est vérifié localement via Stripe CLI & Playwright avant d'être fusionné.",
+        roi_heading: "Comparaison Coût & Délai",
+        roi_sub: "Livraison à prix fixe garanti face aux alternatives classiques :",
+        roi1_t: "Boucles de Prompts IA (Lovable / Bolt)",
+        roi1_d: "Corriger un bug casse deux fonctionnalités existantes",
+        roi2_t: "Freelance Facturé à l'Heure",
+        roi2_d: "Démarrage lent et facture finale imprévisible",
+        roi3_t: "Sauvetage Chirurgical à Prix Fixe (Avec Moi)",
+        roi3_d: "Correction racine, audit RLS & tests Playwright",
+        roi_cta: "Choisir Votre Forfait à Prix Fixe",
+        proc_eyebrow: "Méthode & FAQ",
+        proc_title: "Fonctionnement & Questions Fréquentes",
+        step1_num: "Étape 01 • Diagnostic",
+        step1_title: "Audit & Triage du Dépôt",
+        step1_desc: "Partagez votre dépôt GitHub ou lien de prévisualisation. J'analyse vos erreurs de build, vos règles Supabase RLS et vos logs Stripe pour confirmer le périmètre.",
+        step2_num: "Étape 02 • Exécution",
+        step2_title: "Correction Chirurgicale & Polissage UI/UX",
+        step2_desc: "Je corrige vos blocages backend, auth et paiement sur une branche Git isolée tout en préservant l'existant, et j'améliore l'interface responsive.",
+        step3_num: "Étape 03 • Vérification",
+        step3_title: "Tests Live & Déploiement Production",
+        step3_desc: "Chaque parcours est testé sur ordinateur et mobile via Playwright avec zéro erreur console, déployé sur Vercel et livré avec documentation.",
+        faq1_q: "1. Comment partager mon code en toute sécurité sans exposer mes clés secrètes ?",
+        faq1_a: "Vous invitez simplement mon compte GitHub sur votre dépôt. Vous n'envoyez jamais vos clés Stripe ou Supabase de production en chat : nous testons avec des clés Sandbox et configurons la production directement dans Vercel.",
+        faq2_q: "2. La correction de mes bugs risque-t-elle de casser les fonctionnalités qui marchent déjà ?",
+        faq2_a: "Non. Contrairement aux outils IA qui réécrivent des fichiers entiers au hasard, je travaille sur une branche Git dédiée (rescue/production-fix) avec des modifications minimales vérifiées par TypeScript et Playwright.",
+        faq3_q: "3. Comment fonctionne la protection du paiement sur Contra ?",
+        faq3_a: "Contra sécurise votre paiement à prix fixe sous séquestre (Escrow) avec 0% de commission. Les fonds ne sont débloqués qu'après livraison et validation de votre part.",
+        faq4_q: "4. Que faire si j'hésite entre les forfaits ($150, $450 ou $1,200) ?",
+        faq4_a: "Utilisez l'encadré de Diagnostic Gratuit ci-dessous pour copier le message de 3 lignes et envoyez-le-moi sur Contra. J'analyserai vos logs gratuitement en 15 minutes avant toute commande.",
+        tr_eye: "Vous Hésitez sur le Forfait ?",
+        tr_title: "Obtenez un Audit Diagnostique Gratuit en 15 Minutes",
+        tr_desc: "Envoyez-moi votre dépôt GitHub ou lien de prévisualisation sur Contra avant de commander. J'inspecte vos logs et vous réponds en 15 minutes avec la cause exacte.",
+        tr_btn_copy: "📋 Copier le Brief & Contacter sur Contra ↗",
+        tr_btn_direct: "Ouvrir le Profil Contra ↗",
+        tr_box_lbl: "MODÈLE DE MESSAGE RAPIDE",
+        tr_box_hint: "Cliquez sur le bouton pour copier ce modèle et ouvrir la messagerie Contra.",
+        footer_copy: "Architecte Full-Stack Sauvetage d'Apps IA & UI/UX SaaS • Fuseau : CET (GMT+1)",
+        footer_contra: "Réserver sur Contra (0% Frais) ↗",
+        mob_cta_t: "Disponible • Tarif Fixe Garanti",
+        mob_cta_s: "Forfaits dès $150 • 0% de Frais"
+      }
+    };
+
+    function setLanguage(lang) {
+      const dict = i18n[lang] || i18n.en;
+      document.documentElement.lang = lang;
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) {
+          el.textContent = dict[key];
+        }
+      });
+    }
+  </script>
+</body>
+</html>
+
